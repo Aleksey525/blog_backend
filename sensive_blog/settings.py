@@ -92,22 +92,19 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = os.getenv('STATIC_URL')
+STATIC_URL = os.getenv('STATIC_URL', '/static/')
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),
                     os.path.join(BASE_DIR, 'static/img'),
                     os.path.join(BASE_DIR, 'static/fonts'),
                     )
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, os.path.join(BASE_DIR, 'media'))
 
-STATIC_ROOT = os.getenv("STATIC_ROOT")
+STATIC_ROOT = os.getenv('STATIC_ROOT')
 
-MEDIA_URL = os.getenv('MEDIA_URL')
+MEDIA_URL = os.getenv('MEDIA_URL', '/media/')
 
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
-
-print('STATIC_URL', STATIC_URL)
-print('STATICFILES_DIRS', STATICFILES_DIRS)
